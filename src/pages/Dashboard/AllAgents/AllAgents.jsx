@@ -6,7 +6,7 @@ const AllAgents = () => {
   const [agents, setAgents] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/admin/get-agents", {
+    fetch("https://mfs-server-gamma.vercel.app/admin/get-agents", {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("authToken")}`,
@@ -22,7 +22,7 @@ const AllAgents = () => {
   console.log("all agents: ", agents);
 
   const handleBlockAgent = (agentId) => {
-    fetch(`http://localhost:5000/admin/block-agent/${agentId}`, {
+    fetch(`https://mfs-server-gamma.vercel.app/admin/block-agent/${agentId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -44,11 +44,11 @@ const AllAgents = () => {
   };
 
   const handleVerifyAgent = (agentId) => {
-    fetch(`http://localhost:5000/admin/verify-agent/${agentId}`, {
+    fetch(`https://mfs-server-gamma.vercel.app/admin/verify-agent/${agentId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
-        Authorization: `Token ${localStorage.getItem("authToken")}`,
+        authorization: `Bearer ${localStorage.getItem("authToken")}`,
       },
     })
       .then((res) => res.json())

@@ -19,7 +19,7 @@ const Home = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/transaction/cash-request/${id}`,
+        `https://mfs-server-gamma.vercel.app/transaction/cash-request/${id}`,
         {
           method: "POST",
           headers: {

@@ -6,10 +6,10 @@ const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/admin/get-users", {
+    fetch("https://mfs-server-gamma.vercel.app/admin/get-users", {
       headers: {
         "content-type": "application/json",
-        Authorization: `Token ${localStorage.getItem("authToken")}`,
+        authorization: `Bearer ${localStorage.getItem("authToken")}`,
       },
     })
       .then((res) => res.json())
@@ -22,11 +22,11 @@ const AllUsers = () => {
   console.log("all users: ", users);
 
   const handleBlockUser = (userId) => {
-    fetch(`http://localhost:5000/admin/block-user/${userId}`, {
+    fetch(`https://mfs-server-gamma.vercel.app/admin/block-user/${userId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
-        Authorization: `Token ${localStorage.getItem("authToken")}`,
+        authorization: `Bearer ${localStorage.getItem("authToken")}`,
       },
     })
       .then((res) => res.json())

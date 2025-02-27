@@ -30,7 +30,7 @@ const CashOut = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/transaction/cash-out",
+        "https://mfs-server-gamma.vercel.app/transaction/cash-out",
         {
           method: "POST",
           headers: {

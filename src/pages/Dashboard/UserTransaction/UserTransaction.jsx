@@ -7,7 +7,7 @@ const UserTransaction = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:5000/admin/transactions/${userId}`, {
+    fetch(`https://mfs-server-gamma.vercel.app/admin/transactions/${userId}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

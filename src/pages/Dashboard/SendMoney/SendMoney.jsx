@@ -31,7 +31,7 @@ const SendMoney = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/transaction/send-money",
+        "https://mfs-server-gamma.vercel.app/transaction/send-money",
         {
           method: "POST",
           headers: {

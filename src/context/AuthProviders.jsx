@@ -20,7 +20,7 @@ const AuthProviders = ({ children }) => {
       toast.error("User ID is missing. Unable to log out.");
       return;
     }
-    fetch("http://localhost:5000/user/logout", {
+    fetch("https://mfs-server-gamma.vercel.app/user/logout", {
       method: "POST",
       headers: {
         authorization: `Bearer ${token}`,
@@ -52,13 +52,16 @@ const AuthProviders = ({ children }) => {
   const loginUser = async (mobileOrEmail, pin) => {
     const deviceId = uuidv4();
     try {
-      const response = await fetch("http://localhost:5000/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ mobileOrEmail, pin, deviceId }),
-      });
+      const response = await fetch(
+        "https://mfs-server-gamma.vercel.app/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ mobileOrEmail, pin, deviceId }),
+        }
+      );
       const data = await response.json();
       console.log("user details from get auth: ", data);
 
@@ -88,7 +91,7 @@ const AuthProviders = ({ children }) => {
     if (UserId && Token) {
       try {
         const response = await fetch(
-          `http://localhost:5000/user/details/${UserId}/`,
+          `https://mfs-server-gamma.vercel.app/user/details/${UserId}/`,
           {
             method: "GET",
             headers: {

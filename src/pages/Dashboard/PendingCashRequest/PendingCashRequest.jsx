@@ -7,7 +7,7 @@ const PendingCashRequest = () => {
   const [loading, setLoading] = useState(true);
   const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
-    fetch("http://localhost:5000/admin/cash-requests/pending", {
+    fetch("https://mfs-server-gamma.vercel.app/admin/cash-requests/pending", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -28,14 +28,17 @@ const PendingCashRequest = () => {
       status: "approved",
       adminId: user._id,
     };
-    fetch(`http://localhost:5000/transaction/cash-request/${requestId}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-      body: JSON.stringify(payload),
-    })
+    fetch(
+      `https://mfs-server-gamma.vercel.app/transaction/cash-request/${requestId}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+        body: JSON.stringify(payload),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("Request update: ", data);

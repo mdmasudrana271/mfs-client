@@ -7,13 +7,16 @@ const UserAgentTransaction = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:5000/transaction/user-transactions/${userId}`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-    })
+    fetch(
+      `https://mfs-server-gamma.vercel.app/transaction/user-transactions/${userId}`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("data: ", data);

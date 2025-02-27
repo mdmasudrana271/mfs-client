@@ -29,12 +29,12 @@ const Withdraw = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/transaction/withdraw-request",
+        "https://mfs-server-gamma.vercel.app/transaction/withdraw-request",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
           body: JSON.stringify(payload),
         }

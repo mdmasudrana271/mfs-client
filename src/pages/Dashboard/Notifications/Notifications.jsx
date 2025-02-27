@@ -6,12 +6,15 @@ const Notifications = () => {
   const [loading, setLoading] = useState(true);
   const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
-    fetch(`http://localhost:5000/user/notifications/${user._id}`, {
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-    })
+    fetch(
+      `https://mfs-server-gamma.vercel.app/user/notifications/${user._id}`,
+      {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("data: ", data);

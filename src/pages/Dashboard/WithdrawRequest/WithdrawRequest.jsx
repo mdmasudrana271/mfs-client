@@ -7,12 +7,15 @@ const WithdrawRequest = () => {
   const [loading, setLoading] = useState(true);
   const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
-    fetch("http://localhost:5000/admin/withdraw-requests/pending", {
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-    })
+    fetch(
+      "https://mfs-server-gamma.vercel.app/admin/withdraw-requests/pending",
+      {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("data: ", data);
@@ -27,14 +30,17 @@ const WithdrawRequest = () => {
       status: "approved",
       adminId: user._id,
     };
-    fetch(`http://localhost:5000/transaction/withdraw-request/${requestId}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-      body: JSON.stringify(payload),
-    })
+    fetch(
+      `https://mfs-server-gamma.vercel.app/transaction/withdraw-request/${requestId}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+        body: JSON.stringify(payload),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("Request update: ", data);

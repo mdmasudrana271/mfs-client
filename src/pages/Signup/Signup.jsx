@@ -26,7 +26,7 @@ const Signup = () => {
       pin: data.pin,
     };
     const { name, email, mobile, pin, accountType, nid } = data;
-    fetch("http://localhost:5000/user/register/", {
+    fetch("https://mfs-server-gamma.vercel.app/user/register/", {
       method: "POST",
       headers: {
         "content-type": "application/json",
