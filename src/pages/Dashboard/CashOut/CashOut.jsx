@@ -56,7 +56,7 @@ const CashOut = () => {
       }
       setIsProcessing(false);
     } catch (error) {
-      setError(error);
+      console.log(error.message || "Something went wrong. Please");
       setIsProcessing(false);
     }
   };
