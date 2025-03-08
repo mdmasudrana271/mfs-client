@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Spinner from "../../../components/Spinner/Spinner";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const CashOut = () => {
   const {
@@ -44,7 +45,7 @@ const CashOut = () => {
       const result = await response.json();
       console.log(result);
 
-      if (response.ok) {
+      if (response) {
         setSuccess(true);
         // Reset form values
         toast.success(result.message);
