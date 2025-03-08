@@ -56,7 +56,7 @@ const CashOut = () => {
       }
       setIsProcessing(false);
     } catch (error) {
-      setError("Network error. Please try again later.");
+      setError(error);
       setIsProcessing(false);
     }
   };
@@ -176,7 +176,7 @@ const CashOut = () => {
           className="w-full py-2 bg-rose-600 text-white font-bold rounded hover:bg-rose-700"
           disabled={isProcessing}
         >
-          {isProcessing ? "Processing..." : "Complete Cash-In"}
+          {isProcessing ? "Processing..." : "Complete Cash-Out"}
         </button>
       </form>
     </div>
